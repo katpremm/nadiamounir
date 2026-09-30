@@ -579,18 +579,10 @@ a {
 }
 
 .bio-photo-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.25rem;
-  border-radius: var(--radius-md);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
 }
 
 .bio-photo-card img {
