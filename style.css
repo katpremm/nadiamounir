@@ -566,10 +566,11 @@ a {
 
 /* Section 1: Biografie */
 .bio-grid {
-  display: grid;
-  grid-template-columns: 14fr 10fr;
-  gap: 9rem;
-  align-items: center;
+  position: relative;
+  object-fit: cover;
+  border-radius: var (--radius-lg);
+  overflow: hidden;
+  box-shadow: var (--shadow-lg);  
 }
 
 @media (max-width: 992px) {
