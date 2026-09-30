@@ -578,57 +578,6 @@ a {
   }
 }
 
-.bio-photo-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.bio-photo-card img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.bio-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), transparent);
-  color: white;
-  padding: 1.5rem;
-}
-
-.bio-card-overlay h3 {
-  color: white;
-  font-size: 1.35rem;
-}
-
-.bio-card-overlay p {
-  opacity: 0.9;
-  font-size: 0.85rem;
-}
-
-.bio-details {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.bio-text {
-  font-size: 1.05rem;
-  color: var(--text-body);
-  line-height: 1.7;
-}
-
-.bio-qualifications-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
 
 .qual-item {
   background: white;
