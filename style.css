@@ -580,6 +580,7 @@ a {
 
 .bio-photo-card {
   position: relative;
+  object-fit: cover;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
