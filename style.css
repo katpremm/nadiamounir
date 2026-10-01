@@ -435,6 +435,8 @@ a {
 
 .photo-card {
   position: static;
+  width: 448px;
+  height: 480px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
@@ -580,13 +582,15 @@ a {
 
 .bio-photo-card {
   position: static;
+  width: 448px;
+  height: 480px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
 
 .bio-photo-card img {
-  width: 100%;
+  width: 448px;
   height: 480px;
   object-fit: cover;
   display: block;
