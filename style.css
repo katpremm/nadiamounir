@@ -574,7 +574,8 @@ a {
 
 @media (max-width: 992px) {
   .bio-grid {
-    grid-template-columns: 1fr;
+  width: 448px;
+  height: 480px;
   }
 }
 
@@ -628,7 +629,7 @@ a {
 
 .bio-qualifications-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
