@@ -1,1100 +1,505 @@
-/* Modern Dental Clinic Theme - Styling System */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap');
-
-:root {
-  /* Color Palette - Medical Teal & Oceanic Blue */
-  --primary-color: #0891b2;
-  --primary-hover: #0e7490;
-  --primary-light: #ecfeff;
-  --primary-border: #a5f3fc;
-  
-  --secondary-color: #0284c7;
-  --secondary-hover: #0369a1;
-  --secondary-light: #f0f9ff;
-
-  --accent-color: #10b981;
-  --accent-light: #d1fae5;
-  
-  --gold-star: #f59e0b;
-
-  --text-dark: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
-
-  --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
-  --bg-card: rgba(255, 255, 255, 0.92);
-  --bg-card-hover: #ffffff;
-  
-  --shadow-sm: 0 2px 8px rgba(8, 145, 178, 0.06);
-  --shadow-md: 0 8px 24px rgba(8, 145, 178, 0.12);
-  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.14);
-  --shadow-glow: 0 0 25px rgba(8, 145, 178, 0.25);
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-full: 9999px;
-
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* RTL Support for Arabic */
-[dir="rtl"] {
-  --font-heading: 'Noto Sans Arabic', 'Outfit', sans-serif;
-  --font-body: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
-  font-family: var(--font-body);
-  background: #f8fafc;
-  color: var(--text-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  color: var(--text-dark);
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
-
-/* Container */
-.container {
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Modern Glass Navbar */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(8, 145, 178, 0.12);
-  padding: 0.85rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Brand Logo */
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--primary-hover);
-}
-
-.logo-icon {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
-}
-
-.brand-text span {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Top Left Dropdown Nav */
-.nav-dropdown-wrapper {
-  position: relative;
-}
-
-.dropdown-toggle-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--primary-light);
-  color: var(--primary-hover);
-  border: 1.5px solid var(--primary-border);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-full);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.dropdown-toggle-btn:hover, .dropdown-toggle-btn.active {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.25);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  width: 240px;
-  background: white;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(8, 145, 178, 0.15);
-  padding: 0.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: var(--transition);
-  z-index: 1100;
-}
-
-[dir="rtl"] .dropdown-menu {
-  left: auto;
-  right: 0;
-}
-
-.dropdown-menu.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-body);
-  transition: var(--transition);
-}
-
-.dropdown-item:hover {
-  background: var(--primary-light);
-  color: var(--primary-hover);
-  transform: translateX(4px);
-}
-
-[dir="rtl"] .dropdown-item:hover {
-  transform: translateX(-4px);
-}
-
-.dropdown-item i {
-  font-size: 1.1rem;
-  color: var(--primary-color);
-}
-
-/* Top Right Language Selector */
-.lang-selector-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: #f1f5f9;
-  padding: 0.25rem;
-  border-radius: var(--radius-full);
-  border: 1px solid #e2e8f0;
-}
-
-.lang-btn {
-  border: none;
-  background: transparent;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.lang-btn.active {
-  background: white;
-  color: var(--primary-hover);
-  box-shadow: var(--shadow-sm);
-}
-
-.lang-btn:hover:not(.active) {
-  color: var(--text-dark);
-}
-
-/* Quick Emergency Bar */
-.emergency-bar {
-  background: linear-gradient(90deg, #0f172a, #1e293b);
-  color: white;
-  padding: 0.5rem 0;
-  font-size: 0.85rem;
-  text-align: center;
-}
-
-.emergency-bar-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.emergency-badge {
-  background: #ef4444;
-  color: white;
-  padding: 0.15rem 0.6rem;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  animation: pulse-red 2s infinite;
-}
-
-@keyframes pulse-red {
-  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
-  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-}
-
-/* Hero Section */
-.hero-section {
-  padding: 4rem 0;
-  background: var(--bg-gradient);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (max-width: 992px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.tagline-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: white;
-  color: var(--primary-hover);
-  border: 1px solid var(--primary-border);
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  font-weight: 700;
-  width: fit-content;
-  box-shadow: var(--shadow-sm);
-}
-
-.hero-title {
-  font-size: 2.75rem;
-  color: var(--text-dark);
-  letter-spacing: -0.5px;
-}
-
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-body);
-  max-width: 560px;
-}
-
-/* Contact Action Buttons (Mandatory Requirement) */
-.contact-actions-box {
-  background: white;
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(8, 145, 178, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.actions-header-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.action-buttons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.75rem;
-}
-
-.btn-action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.25rem;
-  border-radius: var(--radius-md);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
-}
-
-.btn-call {
-  background: linear-gradient(135deg, var(--accent-color), #059669);
-  color: white;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
-}
-
-.btn-call:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-}
-
-.btn-email {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.3);
-}
-
-.btn-email:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(8, 145, 178, 0.4);
-}
-
-.btn-maps {
-  background: #f1f5f9;
-  color: var(--text-dark);
-  border: 1.5px solid #cbd5e1;
-}
-
-.btn-maps:hover {
-  background: #e2e8f0;
-  color: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
-/* Featured Photo Container */
-.hero-photo-wrapper {
-    max-width: 50%;
-    max-height: 50%;
-    display: block;
-}
-  
-
-.photo-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 4px solid white;
-}
-
-.hero-img {
-  width: 100%;
-  height: 440px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.hero-photo-wrapper:hover .hero-img {
-  transform: scale(1.03);
-}
-
-.rating-floating-badge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  padding: 0.85rem 1.25rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-[dir="rtl"] .rating-floating-badge {
-  left: auto;
-  right: 20px;
-}
-
-.stars {
-  color: var(--gold-star);
-  font-size: 1.1rem;
-}
-
-.badge-text-title {
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-}
-
-.badge-text-sub {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* Features Highlight Bar */
-.features-strip {
-  background: white;
-  padding: 2rem 0;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.strip-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.feature-pill-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-md);
-  background: var(--primary-light);
-}
-
-.feature-icon {
-  width: 44px;
-  height: 44px;
-  background: white;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  box-shadow: var(--shadow-sm);
-}
-
-.feature-info h4 {
-  font-size: 0.95rem;
-  margin-bottom: 0.15rem;
-}
-
-.feature-info p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Sections Styling */
-.section {
-  padding: 5rem 0;
-}
-
-.section-header {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 3.5rem auto;
-}
-
-.section-tag {
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.section-title {
-  font-size: 2.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.section-desc {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-}
-
-/* Section 1: Biografie */
-.bio-grid {
-  display: grid;
-  grid-template-columns: 4.5fr 7.5fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (max-width: 992px) {
-  .bio-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.bio-photo-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-
-.bio-photo-card img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.bio-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), transparent);
-  color: white;
-  padding: 1.5rem;
-}
-
-.bio-card-overlay h3 {
-  color: white;
-  font-size: 1.35rem;
-}
-
-.bio-card-overlay p {
-  opacity: 0.9;
-  font-size: 0.85rem;
-}
-
-.bio-details {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.bio-text {
-  font-size: 1.05rem;
-  color: var(--text-body);
-  line-height: 1.7;
-}
-
-.bio-qualifications-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.qual-item {
-  background: white;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
-  border-left: 4px solid var(--primary-color);
-  box-shadow: var(--shadow-sm);
-}
-
-[dir="rtl"] .qual-item {
-  border-left: none;
-  border-right: 4px solid var(--primary-color);
-}
-
-.qual-item h5 {
-  font-size: 0.95rem;
-  color: var(--text-dark);
-}
-
-.qual-item p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Section 2: Fotos / Galerie */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  height: 260px;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.08);
-}
-
-.gallery-caption {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 145, 178, 0.9), rgba(15, 23, 42, 0.4));
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover .gallery-caption {
-  opacity: 1;
-}
-
-.gallery-caption h4 {
-  color: white;
-  font-size: 1.1rem;
-}
-
-.gallery-caption p {
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-/* Section 3: Feedback / Patient Reviews */
-.feedback-bg {
-  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
-}
-
-.reviews-summary-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.overall-score {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.score-num {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--primary-hover);
-  line-height: 1;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.review-card {
-  background: white;
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid #f1f5f9;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.review-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.reviewer-info {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  color: var(--primary-hover);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.reviewer-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.review-date {
-  font-size: 0.75rem;
-  color: var(--text-light);
-}
-
-.review-text {
-  font-size: 0.92rem;
-  color: var(--text-body);
-  font-style: italic;
-}
-
-/* Feedback Form Box */
-.add-feedback-box {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  margin-top: 3rem;
-  border: 1px solid var(--primary-border);
-}
-
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.form-group-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-@media (max-width: 600px) {
-  .form-group-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid #cbd5e1;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  outline: none;
-  transition: var(--transition);
-}
-
-.form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
-}
-
-/* Section 4: Leistungen (Services) */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background: white;
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid #f1f5f9;
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-border);
-}
-
-.service-icon-box {
-  width: 56px;
-  height: 56px;
-  background: var(--primary-light);
-  color: var(--primary-color);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.75rem;
-}
-
-.service-title {
-  font-size: 1.25rem;
-  color: var(--text-dark);
-}
-
-.service-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.service-list li {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.service-list li::before {
-  content: '✓';
-  color: var(--accent-color);
-  font-weight: 800;
-}
-
-/* Map & Location Card */
-.location-section {
-  padding: 4rem 0;
-  background: #f1f5f9;
-}
-
-.location-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 992px) {
-  .location-card {
-    grid-template-columns: 1fr;
-  }
-}
-
-.location-info {
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.info-icon {
-  width: 40px;
-  height: 40px;
-  background: var(--primary-light);
-  color: var(--primary-color);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.map-container {
-  min-height: 380px;
-  width: 100%;
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Footer */
-.footer {
-  background: #0f172a;
-  color: white;
-  padding: 3rem 0 1.5rem 0;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-col h4 {
-  color: white;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.footer-links a {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-  color: white;
-}
-
-.footer-bottom {
-  border-top: 1px solid #1e293b;
-  padding-top: 1.5rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #64748b;
-}
-
-/* Modals */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition);
-  padding: 1rem;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-content {
-  background: white;
-  border-radius: var(--radius-lg);
-  width: 100%;
-  max-width: 540px;
-  padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  transform: translateY(20px);
-  transition: var(--transition);
-}
-
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  border: none;
-  background: #f1f5f9;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-}
-
-[dir="rtl"] .modal-close-btn {
-  right: auto;
-  left: 1.25rem;
-}
-
-.modal-close-btn:hover {
-  background: #e2e8f0;
-  color: var(--text-dark);
-}
-
-/* Toast Notifications */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: #0f172a;
-  color: white;
-  padding: 0.85rem 1.5rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  z-index: 3000;
-  transform: translateY(100px);
-  opacity: 0;
-  transition: var(--transition);
-}
-
-[dir="rtl"] .toast {
-  right: auto;
-  left: 24px;
-}
-
-.toast.show {
-  transform: translateY(0);
-  opacity: 1;
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dentist Dr. Nadia Mounir | Gentle Dentistry in Alexandria</title>
+  <meta name="description" content="Modern & gentle dental practice in Alexandria. Prophylaxis, dental implants, cosmetic dentistry & emergency care. Book your appointment now!">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Emergency Banner -->
+  <div class="emergency-bar">
+    <div class="container emergency-bar-content">
+      <span class="emergency-badge" data-i18n="emergency_badge">Notdienst</span>
+      <span data-i18n="emergency_text">⚠️ Notfall-Telefon für Schmerzpatienten: +20 / 122 885 6837</span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      
+      <!-- TOP LEFT: Dropdown Button & Menu -->
+      <div class="nav-dropdown-wrapper">
+        <button class="dropdown-toggle-btn" id="navDropdownBtn" aria-expanded="false" aria-label="Menü öffnen">
+          <span data-i18n="dropdown_title">Menü ☰</span>
+        </button>
+
+        <nav class="dropdown-menu" id="navDropdownMenu">
+          <a href="#biografie" class="dropdown-item">
+            <i>👤</i> <span data-i18n="nav_biografie">Biografie</span>
+          </a>
+          <a href="#fotos" class="dropdown-item">
+            <i>🖼️</i> <span data-i18n="nav_fotos">Fotos</span>
+          </a>
+          <a href="#feedback" class="dropdown-item">
+            <i>⭐</i> <span data-i18n="nav_feedback">Feedback</span>
+          </a>
+          <a href="#leistungen" class="dropdown-item">
+            <i>🦷</i> <span data-i18n="nav_leistungen">Leistungen</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Center Logo -->
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">🦷</div>
+        <div class="brand-text">
+          <div data-i18n="practice_name">Zahnarztpraxis Dr. Nadia Mounir</div>
+          <span data-i18n="subtitle_badge">Alexandria</span>
+        </div>
+      </a>
+
+      <!-- TOP RIGHT: Language Selector (English & Arabic) -->
+      <div class="lang-selector-wrapper">
+        <button class="lang-btn" data-lang="de" title="Deutsch">DE</button>
+        <button class="lang-btn" data-lang="en" title="English">EN</button>
+        <button class="lang-btn active" data-lang="ar" title="العربية">AR</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      
+      <!-- Left Content Column -->
+      <div class="hero-content">
+        <div class="tagline-pill">
+          <span>✨</span>
+          <span data-i18n="subtitle_badge">Sanfte & Moderne Zahnmedizin in Alexandria</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="hero_title">
+          Ihr strahlendes Lächeln in besten Händen
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero_desc">
+          Herzenssache Zahngesundheit: Ich kombiniere modernste Technik mit feinfühliger, schmerzfreier Behandlung für die ganze Familie.
+        </p>
+
+        <!-- MANDATORY CONTACT ACTION BUTTONS (Sofort anrufen, E-Mail, Google Maps) -->
+        <div class="contact-actions-box">
+          <div class="actions-header-title">
+            <span>⚡</span> <span data-i18n="quick_contact_title">Direkter Praxis-Kontakt & Anfahrt</span>
+          </div>
+
+          <div class="action-buttons-grid">
+            <!-- 1. Sofortige Anruffunktion -->
+            <a href="tel:002035164138" class="btn-action btn-call">
+              <span data-i18n="btn_call">📞 Jetzt Anrufen</span>
+            </a>
+
+            <!-- 2. Sofortige Anruffunktion -->
+            <a href="tel:00201228856837" class="btn-action btn-call">
+              <span data-i18n="btn_call">📞 Whats App</span>
+            </a>
+
+            <!-- 4. Google Maps Link Button -->
+            <a href="https://www.google.com/maps/place/Saint+Mary+Hospital/@31.2541364,29.9944266,705m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14f5dabfaaaaaaab:0xc0ae2b3d18cd66e0!8m2!3d31.2541318!4d29.9970015!16s%2Fg%2F11b5pkfkdq?entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn-action btn-maps">
+              <span data-i18n="btn_maps">📍 Auf Google Maps finden</span>
+            </a>
+             <p data-i18n="address_val">Alexandria, Sidi Bishr, Seif-Straße, gegenüber dem El-Adra-Krankenhaus</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Photo Showcase (Platz für ein Foto) -->
+      <div class="hero-photo-wrapper">
+        <div class="photo-card">
+          <img src="tooth_logo.jpg" alt="Moderne Zahnarztpraxis Dr. Nadia Mounir" class="hero-img" 9613<<<<<<<<<<<<<<<654-28e377c37b09?auto=format&fit=crop&w=1000&q=80'">
+          <div class="rating-floating-badge">
+            <div class="stars">★★★★★</div>
+            <div>
+          F with namegaltModerneZahnarztpraxis Dr. Nadia Mounir"
+          <div class="rating-floating-badge">
+            <div class="stars">★★★★★</div>
+            <div>
+              <div class="badge-text-title" data-i18n="rating_badge">4.9 / 5.0 Sterne</div>
+              <div class="badge-text-sub" data-i18n="rating_sub">Über 340+ glückliche Patienten</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Highlights Feature Strip -->
+  <section class="features-strip">
+    <div class="container strip-grid">
+      <div class="feature-pill-item">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-info">
+          <h4 data-i18n="strip_1_title">Sanfte Behandlung</h4>
+          <p data-i18n="strip_1_sub">Ideal für Angstpatienten</p>
+        </div>
+      </div>
+
+      <div class="feature-pill-item">
+        <div class="feature-icon">🔬</div>
+        <div class="feature-info">
+          <h4 data-i18n="strip_2_title">Moderne Technik</h4>
+          <p data-i18n="strip_2_sub">Röntgen</p>
+        </div>
+      </div>
+
+      <div class="feature-pill-item">
+        <div class="feature-icon">⏰</div>
+        <div class="feature-info">
+          <h4 data-i18n="strip_3_title">Schnelle Termine</h4>
+          <p data-i18n="strip_3_sub">Keine langen Wartezeiten</p>
+        </div>
+      </div>
+
+      <div class="feature-pill-item">
+        <div class="feature-icon">🅿️</div>
+        <div class="feature-info">
+          <h4 data-i18n="strip_4_title">Zentrale Lage</h4>
+          <p data-i18n="strip_4_sub"> Parkmöglichkeiten in Nebenstraßen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: BIOGRAFIE -->
+  <section id="biografie" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="bio_tag">ÜBER MICH</span>
+        <h2 class="section-title" data-i18n="bio_title">Dr. med. dent. Nadia Mounir</h2>
+      </div>
+
+      <div class="bio-grid">
+        <div class="bio-photo-card">
+          <img src="tooth_logo.jpg" alt="Logo von Dr. med. dent. Nadia Mounir">
+          <div class="bio-card-overlay">
+            <h3>Dr. med. dent. Nadia Mounir</h3>
+            <p>Praxisinhaberin & Spezialistin für Implantologie</p>
+          </div>
+        </div>
+
+        <div class="bio-details">
+          <p class="bio-text" data-i18n="bio_desc_1">
+            Mit über 25 Jahren Erfahrung in ästhetischer Zahnheilkunde und Implantologie leite ich meine Praxis in Alexandria. Mein Grundsatz: Jeder Patient verdient eine angstfreie, hochpräzise und individuelle Behandlung in entspannter Wohlfühlatmosphäre.
+          </p>
+          <p class="bio-text" data-i18n="bio_desc_2">
+            Kontinuierliche Weiterbildungen an internationalen Spitzenzentren garantieren Behandlungsstandards auf höchstem Niveau.
+          </p>
+
+          <div class="bio-qualifications-grid">
+            <div class="qual-item">
+              <h5 data-i18n="qual_1_title">Bachelor in Zahnmedizin und Zahnchirurgie)</h5>
+            </div>
+            <div class="qual-item">
+              <h5 data-i18n="qual_2_title">Aufbaustudium in den Bereichen Füllung, Wurzelkanalbehandlung und festsitzenden Zahnersatzes absolviert</h5>
+              <p data-i18n="qual_2_sub">Sanfte parodontale Behandlungen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FOTOS / GALERIE -->
+  <section id="fotos" class="section" style="background: #ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="photos_tag">EINBLICKE</span>
+        <h2 class="section-title" data-i18n="photos_title">Meine Praxis in Bildern</h2>
+        <p class="section-desc" data-i18n="photos_desc">Werfen Sie einen Blick in meine hellen, klimatisierten Behandlungsräume und meine entspannende Patientenlounge.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="clinic.jpg" alt="Behandlungsraum" onerror="this.src='Fotos\clinic.jpg'">
+          <div class="gallery-caption">
+            <h4 data-i18n="photo_1_title">Moderner Behandlungsraum</h4>
+            <p data-i18n="photo_1_sub">Modernste Ergonomie & Hygiene</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="waitingroom.jpg" alt="Patientenlounge" onerror="this.src='Fotos\waitingroom.jpg'">
+          <div class="gallery-caption">
+            <h4 data-i18n="photo_2_title">Empfang & Patientenlounge</h4>
+            <p data-i18n="photo_2_sub">Wohlfühlatmosphäre mit Erfrischungen</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="check-in.jpg" alt="Röntgen" onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80'">
+          <div class="gallery-caption">
+            <h4 data-i18n="photo_4_title">Digitales Röntgen</h4>
+            <p data-i18n="photo_4_sub">Strahlenarme Präzisionsdiagnostik</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="tooth_logo.jpg" alt="Logo";>
+          <div class="gallery-caption">
+            <h4 data-i18n="photo_3_title">Freundlich, kompetent & herzlich </h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FEEDBACK & BEWERTUNGEN -->
+  <section id="feedback" class="section feedback-bg">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="feedback_tag">ERFAHRUNGEN</span>
+        <h2 class="section-title" data-i18n="feedback_title">Was meine Patienten sagen</h2>
+        <p class="section-desc" data-i18n="feedback_desc">Ihre Zufriedenheit ist mein größter Ansporn. Lesen Sie Rückmeldungen über meine Praxis.</p>
+      </div>
+
+      <!-- Rating Header Card -->
+      <div class="reviews-summary-card">
+        <div class="overall-score">
+          <div class="score-num">4.9</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p data-i18n="overall_text">Durchschnittliche Bewertung von verifizierten Patienten</p>
+          </div>
+        </div>
+
+        <button class="btn-action btn-email" data-open-modal="booking">
+          <span data-i18n="btn_add_review">✍️ Feedback Hinterlassen</span>
+        </button>
+      </div>
+
+      <!-- Patient Reviews Grid -->
+      <div class="reviews-grid" id="reviewsGrid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="avatar">M</div>
+              <div>
+                <div class="reviewer-name">Nader K.</div>
+                <div class="review-date">Professionelle Zahnreinigung • Vor 2 Wochen</div>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Aufgrund meiner Angst vor Schmerzen bei der Zahnbehandlung ist der Schritt zum Zahnarzt für mich immer riesig. Frau Dr. Mounir und ihr Team haben mir mit ihrer unglaublichen Geduld jegliche Angst genommen. Die Behandlung war sehr gut!"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="avatar">S</div>
+              <div>
+                <div class="reviewer-name">Katharina P.</div>
+                <div class="review-date">Zahnimplantat • Vor 1 Monat</div>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Perfekte Implantation! Dank der guten Planung verlief alles superschnell und völlig ohne Nachwirkungen. Das Ergebnis sieht absolut natürlich aus. Vielen Dank. Top Empfehlung!"</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="avatar">A</div>
+              <div>
+                <div class="reviewer-name">Youssef K.</div>
+                <div class="review-date">Treatment • Vor 3 Wochen</div>
+              </div>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Outstanding service! Perfect for small kids. Very clean practice, modern equipment, and friendly staff. They spoke English fluently and explained every step. 5 stars!"</p>
+        </div>
+      </div>
+
+      <!-- Interactive Add Feedback Box -->
+      <div class="add-feedback-box">
+        <h3>Bewertung abgeben</h3>
+        <form class="feedback-form" id="feedbackForm">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <label data-i18n="form_rating_label">Ihre Bewertung:</label>
+            <div class="star-rating-select" style="font-size: 1.5rem; cursor: pointer;">
+              <span class="star-btn" data-val="1" style="color: var(--gold-star);">★</span>
+              <span class="star-btn" data-val="2" style="color: var(--gold-star);">★</span>
+              <span class="star-btn" data-val="3" style="color: var(--gold-star);">★</span>
+              <span class="star-btn" data-val="4" style="color: var(--gold-star);">★</span>
+              <span class="star-btn" data-val="5" style="color: var(--gold-star);">★</span>
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <input type="text" id="fbName" class="form-control" placeholder="Ihr Name (z.B. Maria S.)" data-i18n-placeholder="form_name_placeholder" required>
+            <input type="text" id="fbService" class="form-control" placeholder="Behandlung (z.B. Zahnreinigung)" data-i18n-placeholder="form_service_placeholder">
+          </div>
+
+          <textarea id="fbMessage" class="form-control" rows="3" placeholder="Ihre Erfahrung in unserer Praxis..." data-i18n-placeholder="form_msg_placeholder" required></textarea>
+
+          <button type="submit" class="btn-action btn-call" style="width: fit-content; align-self: flex-start;">
+            <span data-i18n="btn_submit_feedback">Feedback Absenden</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: LEISTUNGEN -->
+  <section id="leistungen" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="services_tag">LEISTUNGSSPEKTRUM</span>
+        <h2 class="section-title" data-i18n="services_title">Meine Schwerpunkte für Sie</h2>
+        <p class="section-desc" data-i18n="services_desc">Umfassende Zahnheilkunde aus einer Hand – von der Vorsorge bis zum hochwertigen Zahnersatz.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="service-icon-box">🪥</div>
+          <h3 class="service-title" data-i18n="srv_1_title">Prophylaxe & Zahnreinigung</h3>
+          <p data-i18n="srv_1_desc">Professionelle Reinigung (PZR) zur Vorbeugung von Karies und Parodontitis für langanhaltend gesunde Zähne.</p>
+          <ul class="service-list">
+            <li>Zahnsteinentfernung</li>
+            <li>Zahnreinigung</li>
+            <li>Zahnfleisch-Fluoridierung</li>
+            <li>SDF Behandlung für Kleinkinder</li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="service-icon-box">💎</div>
+          <h3 class="service-title" data-i18n="srv_2_title">Zahnimplantate & Zahnersatz</h3>
+          <p data-i18n="srv_2_desc">Festsitzender, natürlicher Zahnersatz in höchster Ästhetik. Sanfte Implantation durch digitale 3D-Planung.</p>
+          <ul class="service-list">
+            <li>Keramikimplantate</li>
+            <li>Implantation</li>
+            <li>Inlays, Kronen & Brücken</li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <div class="service-icon-box">🧸</div>
+          <h3 class="service-title" data-i18n="srv_4_title">Kinderzahnheilkunde</h3>
+          <p data-i18n="srv_4_desc">Einfühlsame und spielerische Betreuung meiner kleinen Patienten ab dem ersten Zahn.</p>
+          <ul class="service-list">
+            <li>Spielerische Gewöhnung</li>
+            <li>Fissurenversiegelung</li>
+            <li>Kariesprophylaxe für Kinder, SDF</li>
+          </ul>
+        </div>
+
+
+        <!-- Service 6 -->
+        <div class="service-card">
+          <div class="service-icon-box">🚨</div>
+          <h3 class="service-title" data-i18n="srv_6_title">Notfall- & Schmerzbehandlung</h3>
+          <p data-i18n="srv_6_desc">Schnelle Hilfe bei akuten Zahnschmerzen. Ich halte täglich Notfalltermine für Sie bereit.</p>
+          <ul class="service-list">
+            <li>Soforttermine am selben Tag</li>
+            <li>Schmerzfreie Sofortversorgung</li>
+            <li>Notdienst nach Absprache</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Embedded Google Map -->
+  <section class="location-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="location_tag">STANDORT & KONTAKT</span>
+        <h2 class="section-title" data-i18n="location_title">So finden Sie mich</h2>
+      </div>
+
+      <div class="location-card">
+        <div class="location-info">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <h4 data-i18n="address_title">Adresse</h4>
+              <p data-i18n="address_val">Alexandria</p>
+              <a href="https://www.google.com/maps/place/Saint+Mary+Hospital/@31.2541364,29.9944266,705m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14f5dabfaaaaaaab:0xc0ae2b3d18cd66e0!8m2!3d31.2541318!4d29.9970015!16s%2Fg%2F11b5pkfkdq?entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action btn-maps" style="display: inline-flex; margin-top: 0.5rem; padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+                <span data-i18n="btn_maps">📍 Auf Google Maps öffnen</span>
+              </a>
+            </div>
+          </div>
+
+        
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <h4 data-i18n="btn_call">📞 Telefon</h4>
+              <p><a href="tel:+2035164138" style="color: var(--primary-hover); font-weight: 700;">+2035164138</a></p>
+              <h4 data-i18n="btn_call">📞 Telefon</h4>
+              <p><a href="tel:+201228856837" style="color: var(--primary-hover); font-weight: 700;">+20122 885 6837</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.826020520291!2d29.994426575032847!3d31.254136360248356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5dabfaaaaaaab%3A0xc0ae2b3d18cd66e0!2sSaint%20Mary%20Hospital!5e1!3m2!1sde!2sat!4v1790327625049!5m2!1sde!2sat" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 data-i18n="practice_name">Zahnarztpraxis Dr. Nadia Mounir</h4>
+          <p data-i18n="footer_description" style="color: #94a3b8; font-size: 0.9rem;">Ihre moderne Praxis für schmerzfreie und nachhaltige Zahnheilkunde in Alexandria.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="dropdown_title">Menü</h4>
+          <ul class="footer-links">
+            <li><a href="#biografie" data-i18n="nav_biografie">Biografie</a></li>
+            <li><a href="#fotos" data-i18n="nav_fotos">Fotos</a></li>
+            <li><a href="#feedback" data-i18n="nav_feedback">Feedback</a></li>
+            <li><a href="#leistungen" data-i18n="nav_leistungen">Leistungen</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="quick_contact_title">Kontakt</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+20 / 122 885 6837">📞 0020 / 122 885 6837</a></li>
+            <li><a href="https://www.google.com/maps/place/Saint+Mary+Hospital/@31.2541364,29.9944266,705m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14f5dabfaaaaaaab:0xc0ae2b3d18cd66e0!8m2!3d31.2541318!4d29.9970015!16s%2Fg%2F11b5pkfkdq?entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" data-i18n="address_val">Alexandria, Sidi Bishr, Seif-Straße, gegenüber dem El-Adra-Krankenhaus</a></li>
+          </ul>
+
+        <div class="footer-col">
+          <h4 data-i18n="quick_contact_title">Kontakt</h4>
+          <ul class="footer-rechts">
+            <re><a href="https://www.google.com/maps/place/Saint+Mary+Hospital/@31.2541364,29.9944266,705m/data=!3m2!1e3!4b1!4m6!3m5!1s0x14f5dabfaaaaaaab:0xc0ae2b3d18cd66e0!8m2!3d31.2541318!4d29.9970015!16s%2Fg%2F11b5pkfkdq?entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action btn-maps" style="display: inline-flex; margin-top: 0.5rem; padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+                 <span data-i18n="btn_maps">📍 Auf Google Maps öffnen</span>
+                </a>
+            </re>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Zahnarztpraxis Dr. med. dent. Nadia Mounir. Alle Rechte vorbehalten. | <a href="#" style="color: inherit; text-decoration: underline;">Impressum</a> | <a href="#" style="color: inherit; text-decoration: underline;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
