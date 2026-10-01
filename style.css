@@ -579,7 +579,7 @@ a {
 }
 
 .bio-photo-card {
-  position: relative;
+  position: static;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
