@@ -568,10 +568,8 @@ a {
 
 /* Section 1: Biografie */
 .bio-grid {
-  display: grid;
-  grid-template-columns: 4.5fr 7.5fr;
-  gap: 3rem;
-  align-items: center;
+  width: 448px;
+  height: 480px;
 }
 
 @media (max-width: 992px) {
