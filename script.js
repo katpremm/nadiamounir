@@ -19,6 +19,9 @@ const translations = {
     btn_maps: "📍 Auf Google Maps finden",
     phone_number: "020 / 122 885 6837 (Whats App)",
 
+    rating_badge: "4.9 / 5.0 Sterne",
+    rating_sub: "Über 340+ glückliche Patienten",
+
     strip_1_title: "Sanfte parodontale Behandlung",
     strip_1_sub: "Ideal für Angstpatienten",
     strip_2_title: "Moderne Technik",
