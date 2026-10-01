@@ -567,9 +567,9 @@ a {
 /* Section 1: Biografie */
 .bio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  align-items: center; 
+  grid-template-columns: 4.5fr 7.5fr;
+  gap: 3rem;
+  align-items: center;
 }
 
 @media (max-width: 992px) {
@@ -577,7 +577,6 @@ a {
     grid-template-columns: 1fr;
   }
 }
-
 
 .bio-photo-card {
   position: relative;
