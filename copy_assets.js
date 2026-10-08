@@ -1,29 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 
-const srcDir = 'C:\\Users\\Desktop\\Webseite Nadia Mounir';
-const destDir = 'C:\\Users\\Desktop\\Webseite Nadia Mounir\\Fotos';
-
-if (!fs.existsSync(destDir)) {
-  fs.mkdirSync(destDir, { recursive: true });
+const rootDir = __dirname;
+const outDir = path.join(rootDir, 'Fotos');
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir, { recursive: true });
 }
 
-const files = fs.readdirSync(srcDir);
+const supported = new Set(['.jpg', '.jpeg', '.png', '.webp']);
+for (const file of fs.readdirSync(rootDir)) {
+  const ext = path.extname(file).toLowerCase();
+  if (!supported.has(ext)) continue;
 
-const mapping = {
-  'dental_hero': 'check-in.jpg',
-  'dentist_portrait': 'tooth_logo.jpg',
-  'treatment_room': 'clinic.jpg',
-  'waiting_lounge': 'waitingroom.jpg'
-};
+  const source = path.join(rootDir, file);
+  const target = path.join(outDir, file);
 
-files.forEach(file => {
-  for (const [key, targetName] of Object.entries(mapping)) {
-    if (file.startsWith(key) && file.endsWith('.png')) {
-      const srcPath = path.join(srcDir, file);
-      const destPath = path.join(destDir, targetName);
-      fs.copyFileSync(srcPath, destPath);
-      console.log(`Copied ${file} -> ${destPath}`);
-    }
+  if (source === target) continue;
+  if (!fs.existsSync(target)) {
+    fs.copyFileSync(source, target);
+    console.log('Copied ' + file + ' -> ' + target);
   }
-});
+}
+
+console.log('Asset directory synced.');
