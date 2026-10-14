@@ -4,10 +4,11 @@ const translations = {
     city_tag: 'الإسكندرية',
     menu_label: 'القائمة ☰',
     emergency_badge: 'الطوارئ',
-    emergency_text: '⚠️ هاتف الطوارئ لمرضى الألم: +20 / 122 885 6837',
+    emergency_text: '⚠️ هاتف الطوارئ لمرضى الألم:',
     tag_line: 'طب أسنان حديث ولطيف',
     hero_title: 'ابتسامتكم المشرقة في أيدٍ أمينة',
     hero_text: 'صحة الأسنان ليست مجرد علاج، بل رعاية دقيقة ومخصصة مع أحدث التقنيات والأجواء المريحة للمرضى.',
+    hero_card_toggle: 'انقر للتبديل بين الشعار وبطاقة العمل',
     cta_call: '📞 اتصل الآن',
     cta_map: '📍 الموقع',
     rating_label: '4.9/5',
@@ -90,10 +91,11 @@ const translations = {
     city_tag: 'Alexandria',
     menu_label: 'Menü ☰',
     emergency_badge: 'Notdienst',
-    emergency_text: '⚠️ Notfall-Telefon für Schmerzpatienten: +20 / 122 885 6837',
+    emergency_text: '⚠️ Notfall-Telefon für Schmerzpatienten:',
     tag_line: 'Sanfte & moderne Zahnmedizin',
     hero_title: 'Ihr strahlendes Lächeln in besten Händen',
     hero_text: 'Gesundheit der Zähne ist mehr als Behandlung: sie ist individuelle, präzise und ruhige Versorgung mit modernster Technik.',
+    hero_card_toggle: 'Klicken, um zwischen Logo und Visitenkarte zu wechseln',
     cta_call: '📞 Jetzt anrufen',
     cta_map: '📍 Standort',
     rating_label: '4.9/5',
@@ -176,10 +178,11 @@ const translations = {
     city_tag: 'Alexandria',
     menu_label: 'Menu ☰',
     emergency_badge: 'Emergency',
-    emergency_text: '⚠️ Emergency phone for patients in pain: +20 / 122 885 6837',
+    emergency_text: '⚠️ Emergency phone for patients in pain:',
     tag_line: 'Gentle & modern dentistry',
     hero_title: 'Your radiant smile in safe hands',
     hero_text: 'Dental health is not just treatment; it is precise, personalized care supported by the latest technology and a calm environment.',
+    hero_card_toggle: 'Click to switch between the logo and business card',
     cta_call: '📞 Call now',
     cta_map: '📍 Location',
     rating_label: '4.9/5',
@@ -279,6 +282,11 @@ function setLanguage(lang) {
     if (content[key]) el.placeholder = content[key];
   });
 
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    if (content[key]) el.setAttribute('aria-label', content[key]);
+  });
+
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === available);
   });
@@ -291,6 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
   });
+
+  const heroImageToggle = document.querySelector('.hero-image-toggle');
+  if (heroImageToggle) {
+    heroImageToggle.addEventListener('click', () => {
+      const isVisible = heroImageToggle.classList.toggle('is-card-visible');
+      heroImageToggle.setAttribute('aria-pressed', String(isVisible));
+    });
+  }
 
   if (toggleButton && menu) {
     toggleButton.addEventListener('click', () => {
